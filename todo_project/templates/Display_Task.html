@@ -1,0 +1,53 @@
+{% extends "Base.html" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1> To Do</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" >
+            <h3>Add Task</h3>
+            <form method="post" class="p-3 shadow" style="background-color:powderblue">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Name of the task"><br>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="priority" class="form-control" placeholder="Your task Priority"><br>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="date" class="form-control" placeholder="DATE"><br>
+                </div>
+                    <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Pending Task List</h3>
+            {% for i in obj %}
+            <div class="shadow card">
+                <div class="card-body" style="background-color:powderblue">
+                    <h5 class="card-title"> {{i.name}}</h5>
+                    <p><b>Priority: {{i.priority}}</b><br>
+                        <i><b>Date: {{i.date}}</b></i>
+                    </p>
+
+                    <a class="btn btn-danger" href="{% url 'cbvdelete' i.id %}">Done</a>
+                    <a class="btn btn-success" href="{% url 'cbvupdate' i.id %}">Update</a>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

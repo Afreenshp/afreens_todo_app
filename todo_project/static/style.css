@@ -1,0 +1,18 @@
+.banner{
+    background: #b06873;
+    width:100%;
+    height:100px;
+    margin-bottom:50;
+    border: 2px solid #888;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+.banner-text{
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    width: 100%;
+    color:white;
+    margin: 0;
+    padding: 0;
+}
